@@ -29,7 +29,7 @@ public class VehicleRepository implements IVehicleRepository {
 
         try {
             //Validate Vehicle
-            if (newVehicle == null || newVehicle.getPlateNumber().isBlank || newVehicle.getVehicleBrand().isBlank() || newVehicle.getCapacityPeople() < 0) {
+            if (newVehicle == null || newVehicle.getPlateNumber().isBlank() || newVehicle.getVehicleBrand().isBlank() || newVehicle.getCapacityPeople() < 0) {
                 return false;
             }
             //this.connect();
