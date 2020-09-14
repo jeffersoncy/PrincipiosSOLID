@@ -28,6 +28,8 @@ public class Vehicle {
      * @param capacityPeople : capacidad del vehiculo
      */
 
+    public Vehicle(){}
+            
     public Vehicle(String plateNumber, String vehicleBrand, double capacityPeople, String vehicleModel, VehicleEnum typeVehicle) {
         this.plateNumber = plateNumber;
         this.vehicleBrand = vehicleBrand;
