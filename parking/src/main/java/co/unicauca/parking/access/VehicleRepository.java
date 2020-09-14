@@ -40,7 +40,7 @@ public class VehicleRepository implements IVehicleRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newVehicle.getPlateNumber());
             pstmt.setString(2, newVehicle.getVehicleBrand());
-            pstmt.setInt(3, newVehicle.getCapacityPeople());
+            pstmt.setDouble(3, newVehicle.getCapacityPeople());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
