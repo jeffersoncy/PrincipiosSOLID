@@ -10,5 +10,5 @@ package co.unicauca.parking.domain;
  * @author Personal
  */
 public enum VehicleEnum {
-    CARRO,MOTO,TRACTOR
+    CAR,MOTO,TRUCK
 }

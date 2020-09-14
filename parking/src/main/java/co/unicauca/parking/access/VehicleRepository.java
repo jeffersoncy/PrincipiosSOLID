@@ -1,9 +1,7 @@
 
 package co.unicauca.parking.access;
 import co.unicauca.parking.domain.Vehicle;
-import co.unicauca.parking.service.Service;
 import java.security.Provider;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,7 +26,7 @@ public class VehicleRepository implements IVehicleRepository {
 
         try {
             //Validate Vehicle
-            if (newVehicle == null || newVehicle.getPlateNumber().isBlank() || newVehicle.getVehicleBrand().isBlank() || newVehicle.getCapacityPeople() < 0) {
+            if (newVehicle == null || newVehicle.getPlateNumber().isEmpty() || newVehicle.getVehicleBrand().isEmpty() || newVehicle.getCapacityPeople() < 0) {
                 return false;
             }
             //this.connect();

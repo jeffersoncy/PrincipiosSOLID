@@ -14,7 +14,7 @@ public class Vehicle {
     private VehicleEnum typeVehicle;
     
     private String vehicleModel;
-    
+     
     private String plateNumber;
 
     private String vehicleBrand;
