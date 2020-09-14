@@ -5,7 +5,8 @@
  */
 package co.unicauca.parking.access;
 
-
+import co.unicauca.parking.access.IVehicleRepository;
+import co.unicauca.parking.access.VehicleRepository;
 /**
  *
  * @author Personal
@@ -27,7 +28,7 @@ public class Factory {
             instance = new Factory();
         }
         return instance;
-
+    }
         /**
      * Método que crea una instancia concreta de la jerarquia IProductRepository
      *
@@ -40,9 +41,7 @@ public class Factory {
      * @param type cadena que indica qué tipo de clase hija debe instanciar
      * @return una clase hija de la abstracción IProductRepository
      */
-    public IVehicleRepository getRepository(String type) 
-    {
-
+    public IVehicleRepository getRepository(String type){
         IVehicleRepository result = null;
 
         switch (type) {
