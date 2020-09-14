@@ -39,7 +39,7 @@ public class Service {
             return -1;
         }
         //falta implementar la interface
-        IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getType())
+        IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getType());
         double result = delivery.calculateCost(vehicle, input, output);
         
         return result;

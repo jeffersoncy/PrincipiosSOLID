@@ -9,6 +9,6 @@ package co.unicauca.parking.domain;
  *
  * @author Personal
  */
-public class VehicleEnum {
-    
+public enum VehicleEnum {
+    CARRO,MOTO,TRACTOR
 }

@@ -10,5 +10,9 @@ package co.unicauca.parking.domain;
  * @author Personal
  */
 public class CarParkingCost {
+
+    CarParkingCost() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
