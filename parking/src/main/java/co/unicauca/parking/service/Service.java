@@ -8,6 +8,7 @@ package co.unicauca.parking.service;
 import co.unicauca.parking.access.IVehicleRepository;
 import co.unicauca.parking.domain.IParkingCost;
 import co.unicauca.parking.domain.Vehicle;
+import co.unicauca.parking.domain.VehicleEnum;
 import co.unicauca.parking.domain.VehicleFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class Service {
             return -1;
         }
         //falta implementar la interface
-        IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getType());
+        IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getTypeVehicle());
         double result = delivery.calculateCost(vehicle, input, output);
         
         return result;
