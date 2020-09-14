@@ -3,7 +3,7 @@ package co.unicauca.parking.access;
 
 
 import co.unicauca.parking.domain.Vehicle;
-import co.unicauca.parking.parking.Service;
+import co.unicauca.parking.service.Service;
 
 import java.beans.Statement;
 import java.security.Provider;
