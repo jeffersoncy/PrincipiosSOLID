@@ -13,6 +13,7 @@ import java.util.Calendar;
  * @author Personal
  */
 public class MotoParkingCost implements IParkingCost{
+    
     @Override
     public double calculateCost(Vehicle vehicle, Calendar input, Calendar output) {
        int hora;
