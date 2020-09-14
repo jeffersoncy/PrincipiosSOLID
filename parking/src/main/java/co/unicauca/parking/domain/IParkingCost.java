@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package co.unicauca.parking.domain;
+import java.time.LocalDate;
 
 /**
  *
  * @author Personal
  */
 public interface IParkingCost {
-    
+
+    public double calculateCost(Vehicle vehicle, LocalDate input, LocalDate output);
+
 }

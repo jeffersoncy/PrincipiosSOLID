@@ -40,28 +40,8 @@ public class Service {
         }
         //falta implementar la interface
         IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getType())
-        double result = delivery.calculateCost(vehiculo, input, output);
-        double TAX = 0.19d;
-        double productTax = vehicle.getPrice() * TAX;
-        return productTax;
-    }
-
-    public boolean saveProduct(Vehicle newVehicle) {
-
-        //Validate product
-        if (newVehicle == null || newVehicle.getProductId() < 0 || newVehicle.getName().isBlank()) {
-            return false;
-        }
-
-        repository.save(newVehicle);
-        return true;
-
-    }
-
-    public List<Product> listProducts() {
-        List<Product> products = new ArrayList<>();
-        products = repository.list();;
-
-        return products;
+        double result = delivery.calculateCost(vehicle, input, output);
+        
+        return result;
     }
 }
