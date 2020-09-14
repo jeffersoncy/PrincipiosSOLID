@@ -6,6 +6,7 @@
 package co.unicauca.parking.domain;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 
 /**
  *
@@ -14,8 +15,25 @@ import java.time.LocalDate;
 public class CarParkingCost implements IParkingCost{
 
     @Override
-    public double calculateCost(Vehicle vehicle, LocalDate input, LocalDate output) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public double calculateCost(Vehicle vehicle, Calendar input, Calendar output) {
+      int hora;
+       int minutes;
+       double cuentaCobro;
+       hora = input.get(Calendar.HOUR);
+       minutes = input.get(Calendar.MINUTE);
+       if(hora < 1)
+       {
+           cuentaCobro = 1000;
+       }
+       else
+       {
+           cuentaCobro = (500 * (minutes * 100 / 60)/100);
+           for (int i = 0; i < hora; i++)
+           {
+               cuentaCobro = cuentaCobro + 500;
+           }
+       }
+       return cuentaCobro;
     }
 
 

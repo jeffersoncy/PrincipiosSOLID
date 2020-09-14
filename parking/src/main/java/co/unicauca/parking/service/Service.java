@@ -12,6 +12,7 @@ import co.unicauca.parking.domain.VehicleEnum;
 import co.unicauca.parking.domain.VehicleFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class Service {
         this.repository = repository;
     }
 
-    public double calculateParkingCost(Vehicle vehicle, LocalDate input, LocalDate output) {
+    public double calculateParkingCost(Vehicle vehicle, Calendar input, Calendar output) {
 
         //Validate product.
         if (vehicle == null) {
