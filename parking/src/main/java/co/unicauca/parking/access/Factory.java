@@ -6,17 +6,14 @@
 package co.unicauca.parking.access;
 
 
-import co.unicauca.solid.dip.domain.access.IVehicleRepository;
-import co.unicauca.solid.dip.domain.access.VehicleRepository;
-
 /**
  *
  * @author Personal
  */
-public class RepositoryFactory {
-    private static RepositoryFactory instance;
+public class Factory {
+    private static Factory instance;
     
-    private RepositoryFactory() {
+    private Factory() {
     }
 
     /**
@@ -24,13 +21,19 @@ public class RepositoryFactory {
      *
      * @return
      */
-    public static RepositoryFactory getInstance() {
+    public static Factory getInstance() {
 
         if (instance == null) {
-            instance = new RepositoryFactory();
+            instance = new Factory();
         }
         return instance;
 
+        /**
+     * Método que crea una instancia concreta de la jerarquia IProductRepository
+     *
+     * @param type cadena que indica qué tipo de clase hija debe instanciar
+     * @return una clase hija de la abstracción IProductRepository
+     */
         /**
      * Método que crea una instancia concreta de la jerarquia IProductRepository
      *
