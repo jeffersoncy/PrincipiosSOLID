@@ -40,7 +40,8 @@ public class Factory {
      * @param type cadena que indica qué tipo de clase hija debe instanciar
      * @return una clase hija de la abstracción IProductRepository
      */
-    public IVehicleRepository getRepository(String type) {
+    public IVehicleRepository getRepository(String type) 
+    {
 
         IVehicleRepository result = null;
 
