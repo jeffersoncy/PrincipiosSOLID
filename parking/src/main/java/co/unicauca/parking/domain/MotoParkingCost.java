@@ -18,7 +18,7 @@ public class MotoParkingCost implements IParkingCost{
        int hora;
        int minutes;
        double cuentaCobro;
-       hora = input.get(Calendar.HOUR);
+       hora = output.get(Calendar.HOUR)-input.get(Calendar.HOUR);
        minutes = input.get(Calendar.MINUTE);
        if(hora < 1)
        {
