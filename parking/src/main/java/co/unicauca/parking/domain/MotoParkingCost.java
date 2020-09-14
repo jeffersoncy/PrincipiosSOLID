@@ -5,8 +5,8 @@
  */
 package co.unicauca.parking.domain;
 
-import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -15,24 +15,24 @@ import java.util.Calendar;
 public class MotoParkingCost implements IParkingCost{
     
     @Override
-    public double calculateCost(Vehicle vehicle, Calendar input, Calendar output) {
-       int hora;
-       int minutes;
-       double cuentaCobro;
-       hora = output.get(Calendar.HOUR)-input.get(Calendar.HOUR);
-       minutes = input.get(Calendar.MINUTE);
-       if(hora < 1)
-       {
-           cuentaCobro = 1000;
-       }
-       else
-       {
-           cuentaCobro = (500 * (minutes * 100 / 60)/100);
-           for (int i = 0; i < hora; i++)
-           {
-               cuentaCobro = cuentaCobro + 500;
-           }
-       }
-       return cuentaCobro;
+    public double calculateCost(Vehicle vehicle, Date input, Date output) {
+//       int hora;
+//       int minutes;
+//       double cuentaCobro;
+//       hora = input.getHours();
+//       minutes = input.getMinutes();
+//       if(hora < 1)
+//       {
+//           cuentaCobro = 1000;
+//       }
+//       else
+//       {
+//           cuentaCobro = (500 * (minutes * 100 / 60)/100);
+//           for (int i = 0; i < hora; i++)
+//           {
+//               cuentaCobro = cuentaCobro + 500;
+//           }
+//       }
+       return 555;
     }
 }

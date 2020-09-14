@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package co.unicauca.parking.domain;
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  *
@@ -13,6 +13,6 @@ import java.util.Calendar;
  */
 public interface IParkingCost {
 
-    public double calculateCost(Vehicle vehicle, Calendar input, Calendar output);
+    public double calculateCost(Vehicle vehicle, Date input, Date output);
 
 }
