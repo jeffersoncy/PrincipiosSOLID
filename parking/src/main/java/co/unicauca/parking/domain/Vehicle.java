@@ -28,11 +28,13 @@ public class Vehicle {
      * @param capacityPeople : capacidad del vehiculo
      */
 
-    public Vehicle(String plateNumber, String vehicleBrand, double capacityPeople) {
+    public Vehicle(String plateNumber, String vehicleBrand, double capacityPeople, String vehicleModel, VehicleEnum typeVehicle) {
         this.plateNumber = plateNumber;
         this.vehicleBrand = vehicleBrand;
         this.capacityPeople = capacityPeople;
-    }
+        this.vehicleModel = vehicleModel;
+        this.typeVehicle = typeVehicle;
+    }   
     
     // getters and setters
 
