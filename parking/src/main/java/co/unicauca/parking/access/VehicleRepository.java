@@ -1,5 +1,10 @@
 
-import co.unicauca.parking.access.IVehicleRepository;
+package co.unicauca.parking.access;
+
+
+import co.unicauca.parking.domain.Vehicle;
+import co.unicauca.parking.parking.Service;
+
 import java.beans.Statement;
 import java.security.Provider;
 import java.sql.Connection;
