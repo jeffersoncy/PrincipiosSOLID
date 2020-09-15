@@ -1,6 +1,7 @@
 package co.unicauca.parking.access;
 
 import co.unicauca.parking.domain.Vehicle;
+import co.unicauca.parking.domain.VehicleEnum;
 import co.unicauca.parking.service.Service;
 
 import java.sql.Connection;
@@ -32,14 +33,14 @@ public class VehicleRepository implements IVehicleRepository {
             }
             //this.connect();
 
-            String sql = "INSERT INTO Vehicle (plateNumber, vehicleBrand, capacityPeople) "
-                    + "VALUES ( ?, ?, ?)";
+            String sql = "INSERT INTO Vehicle (plateNumber, vehicleBrand, capacityPeople, typeVehicle) "
+                    + "VALUES ( ?, ?, ?, ?)";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newVehicle.getPlateNumber());
             pstmt.setString(2, newVehicle.getVehicleBrand());
             pstmt.setInt(3, newVehicle.getCapacityPeople());
-            //pstmt.setObject(4, newVehicle.getTypeVehicle());
+            pstmt.setString(4, newVehicle.getTypeVehicle().toString());
             //pstmt.setString(5, newVehicle.getVehicleModel());
             pstmt.executeUpdate();
             //this.disconnect();
@@ -55,7 +56,7 @@ public class VehicleRepository implements IVehicleRepository {
         List<Vehicle> vehicles = new ArrayList<>();
         try {
 
-            String sql = "SELECT plateNumber, vehicleBrand, capacityPeople FROM Vehicle";
+            String sql = "SELECT plateNumber, vehicleBrand, capacityPeople, typeVehicle FROM Vehicle";
             //this.connect();
 
             Statement stmt = conn.createStatement();
@@ -65,7 +66,9 @@ public class VehicleRepository implements IVehicleRepository {
                 newVehicle.setPlateNumber(rs.getString("plateNumber"));
                 newVehicle.setVehicleBrand(rs.getString("vehicleBrand"));
                 newVehicle.setCapacityPeople(rs.getInt("capacityPeople"));
-                //newVehicle.setTypeVehicle((VehicleEnum)rs.getObject("typeVehicle"));
+                String type = rs.getString("typeVehicle");
+                newVehicle.setTypeVehicle(VehicleEnum.valueOf(type));
+                //newVehicle.setTypeVehicle(VehicleEnum.valueOf(type));
                 //newVehicle.setVehicleModel(rs.getString("vehicleModel"));
                 vehicles.add(newVehicle);
             }
@@ -82,7 +85,8 @@ public class VehicleRepository implements IVehicleRepository {
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
                 + "	plateNumber text PRIMARY KEY,\n"
                 + "	vehicleBrand text NOT NULL,\n"
-                + "	capacityPeople integer\n"
+                + "	capacityPeople integer,\n"
+                + "	typeVehicle text\n"
                 + ");";
 
         try {

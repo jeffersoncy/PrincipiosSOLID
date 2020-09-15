@@ -18,6 +18,7 @@ import co.unicauca.parking.service.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author Personal
@@ -33,19 +34,23 @@ public class Client {
         SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
         Date input = null;
         Date output = null;
-        input = simple.parse("09:42");
-        output = simple.parse("10:42");
+        
+        input = simple.parse("11:00");
+        output = simple.parse("12:40");
         
         System.out.println(" la hora ingresada es: "+input.getHours()+" y los minutos son: "+input.getMinutes());
         
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
+        Vehicle carro1 = new Vehicle("123-CDE", "MAZDA", 15, VehicleEnum.CAR);
+        
         service.saveVehicle(moto1);
+        service.saveVehicle(carro1);
         
         for (Vehicle p : service.listVehicles()) {
             System.out.println(p);
         }
         
-        System.out.println("El costo es: "+service.calculateParkingCost(moto1, input, output));
+        System.out.println("El costo en moto es: "+service.calculateParkingCost(moto1, input, output));
     }
     
 }
