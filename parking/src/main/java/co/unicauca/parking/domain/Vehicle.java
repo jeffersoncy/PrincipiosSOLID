@@ -13,13 +13,13 @@ public class Vehicle {
     
     private VehicleEnum typeVehicle;
     
-    private String vehicleModel;
+    //private String vehicleModel;
      
     private String plateNumber;
 
     private String vehicleBrand;
 
-    private double capacityPeople;
+    private int capacityPeople;
 
     /**
      *
@@ -29,12 +29,12 @@ public class Vehicle {
      */
 
     public Vehicle(){}
-            
-    public Vehicle(String plateNumber, String vehicleBrand, double capacityPeople, String vehicleModel, VehicleEnum typeVehicle) {
+            //, String vehicleModel, VehicleEnum typeVehicle , int capacityPeople
+    public Vehicle(String plateNumber, String vehicleBrand, int capacityPeople, VehicleEnum typeVehicle) {
         this.plateNumber = plateNumber;
         this.vehicleBrand = vehicleBrand;
         this.capacityPeople = capacityPeople;
-        this.vehicleModel = vehicleModel;
+        //this.vehicleModel = vehicleModel;
         this.typeVehicle = typeVehicle;
     }   
     
@@ -54,19 +54,19 @@ public class Vehicle {
         this.typeVehicle = typeVehicle;
     }
 
-    /**
-     * @return the vehicleModel
-     */
-    public String getVehicleModel() {
-        return vehicleModel;
-    }
-
-    /**
-     * @param vehicleModel the vehicleModel to set
-     */
-    public void setVehicleModel(String vehicleModel) {
-        this.vehicleModel = vehicleModel;
-    }
+//    /**
+//     * @return the vehicleModel
+//     */
+//    public String getVehicleModel() {
+//        return vehicleModel;
+//    }
+//
+//    /**
+//     * @param vehicleModel the vehicleModel to set
+//     */
+//    public void setVehicleModel(String vehicleModel) {
+//        this.vehicleModel = vehicleModel;
+//    }
 
     /**
      * @return the plateNumber
@@ -99,21 +99,25 @@ public class Vehicle {
     /**
      * @return the capacityPeople
      */
-    public double getCapacityPeople() {
+    public int getCapacityPeople() {
         return capacityPeople;
     }
 
     /**
      * @param capacityPeople the capacityPeople to set
      */
-    public void setCapacityPeople(double capacityPeople) {
+    public void setCapacityPeople(int capacityPeople) {
         this.capacityPeople = capacityPeople;
     }
-    
 
+    
     @Override
     public String toString() {
-        return "Vehicle{" + "id=" + getPlateNumber() + ", name=" + getVehicleBrand() + ", price=" + getCapacityPeople() + '}';
+        return "Vehicle{" + "Plate Number=" + getPlateNumber() + ", Brand =" + getVehicleBrand()+ ", Capacity People=" + getCapacityPeople()+", Type=" + getTypeVehicle()+'}';
     }
+
+
+
+
 
 }

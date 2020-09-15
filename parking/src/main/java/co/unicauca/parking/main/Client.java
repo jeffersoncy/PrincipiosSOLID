@@ -38,7 +38,12 @@ public class Client {
         
         System.out.println(" la hora ingresada es: "+input.getHours()+" y los minutos son: "+input.getMinutes());
         
-        Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 2, "2008", VehicleEnum.MOTO);
+        Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
+        service.saveVehicle(moto1);
+        
+        for (Vehicle p : service.listVehicles()) {
+            System.out.println(p);
+        }
         
         System.out.println("El costo es: "+service.calculateParkingCost(moto1, input, output));
     }

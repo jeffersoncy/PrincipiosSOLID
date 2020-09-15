@@ -47,4 +47,23 @@ public class Service {
         
         return result;
     }
+    
+    public boolean saveVehicle(Vehicle newVehicle) {
+
+        //Validate product
+        if (newVehicle == null || newVehicle.getPlateNumber().isEmpty()) {
+            return false;
+        }
+
+        repository.save(newVehicle);
+        return true;
+
+    }
+    
+    public List<Vehicle> listVehicles() {
+        List<Vehicle> vehicles = new ArrayList<>();
+        vehicles = repository.list();;
+
+        return vehicles;
+    }
 }

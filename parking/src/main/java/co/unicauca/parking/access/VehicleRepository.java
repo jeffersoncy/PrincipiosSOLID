@@ -1,7 +1,8 @@
-
 package co.unicauca.parking.access;
+
 import co.unicauca.parking.domain.Vehicle;
-import java.security.Provider;
+import co.unicauca.parking.service.Service;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,23 +27,25 @@ public class VehicleRepository implements IVehicleRepository {
 
         try {
             //Validate Vehicle
-            if (newVehicle == null || newVehicle.getPlateNumber().isEmpty() || newVehicle.getVehicleBrand().isEmpty() || newVehicle.getCapacityPeople() < 0) {
+            if (newVehicle == null || newVehicle.getPlateNumber().isEmpty() || newVehicle.getVehicleBrand().isEmpty() || newVehicle.getCapacityPeople() <0 ){
                 return false;
             }
             //this.connect();
 
-            String sql = "INSERT INTO Product ( plateNumber, vehicleBrand, capacityPeople ) "
-                    + "VALUES ( ?, ?, ? )";
+            String sql = "INSERT INTO Vehicle (plateNumber, vehicleBrand, capacityPeople) "
+                    + "VALUES ( ?, ?, ?)";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, newVehicle.getPlateNumber());
             pstmt.setString(2, newVehicle.getVehicleBrand());
-            pstmt.setDouble(3, newVehicle.getCapacityPeople());
+            pstmt.setInt(3, newVehicle.getCapacityPeople());
+            //pstmt.setObject(4, newVehicle.getTypeVehicle());
+            //pstmt.setString(5, newVehicle.getVehicleModel());
             pstmt.executeUpdate();
             //this.disconnect();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(Provider.Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -62,13 +65,14 @@ public class VehicleRepository implements IVehicleRepository {
                 newVehicle.setPlateNumber(rs.getString("plateNumber"));
                 newVehicle.setVehicleBrand(rs.getString("vehicleBrand"));
                 newVehicle.setCapacityPeople(rs.getInt("capacityPeople"));
-
+                //newVehicle.setTypeVehicle((VehicleEnum)rs.getObject("typeVehicle"));
+                //newVehicle.setVehicleModel(rs.getString("vehicleModel"));
                 vehicles.add(newVehicle);
             }
             //this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(Provider.Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
         return vehicles;
     }
@@ -76,9 +80,9 @@ public class VehicleRepository implements IVehicleRepository {
     private void initDatabase() {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS Vehicle (\n"
-                + "	ProductId integer PRIMARY KEY,\n"
-                + "	Name text NOT NULL,\n"
-                + "	Price real\n"
+                + "	plateNumber text PRIMARY KEY,\n"
+                + "	vehicleBrand text NOT NULL,\n"
+                + "	capacityPeople integer\n"
                 + ");";
 
         try {
@@ -88,7 +92,7 @@ public class VehicleRepository implements IVehicleRepository {
             //this.disconnect();
 
         } catch (SQLException ex) {
-            Logger.getLogger(Provider.Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -101,7 +105,7 @@ public class VehicleRepository implements IVehicleRepository {
             conn = DriverManager.getConnection(url);
 
         } catch (SQLException ex) {
-            Logger.getLogger(Provider.Service.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
