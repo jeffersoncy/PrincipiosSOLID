@@ -5,8 +5,6 @@
  */
 package co.unicauca.parking.domain;
 
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
