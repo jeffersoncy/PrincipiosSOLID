@@ -9,11 +9,6 @@ import co.unicauca.parking.access.Factory;
 import co.unicauca.parking.access.IVehicleRepository;
 import co.unicauca.parking.domain.VehicleEnum;
 import co.unicauca.parking.domain.Vehicle;
-import co.unicauca.parking.domain.IParkingCost;
-import co.unicauca.parking.domain.MotoParkingCost;
-import co.unicauca.parking.domain.CarParkingCost;
-import co.unicauca.parking.domain.TruckPartingCost;
-import co.unicauca.parking.domain.VehicleFactory;
 import co.unicauca.parking.service.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,7 +45,7 @@ public class Client {
             System.out.println(p);
         }
         
-        System.out.println("El costo en moto es: "+service.calculateParkingCost(moto1, input, output));
+        System.out.println("El costo es: "+service.calculateParkingCost(moto1, input, output));
     }
     
 }

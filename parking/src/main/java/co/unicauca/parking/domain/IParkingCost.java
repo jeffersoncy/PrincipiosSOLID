@@ -13,6 +13,6 @@ import java.util.Date;
  */
 public interface IParkingCost {
 
-    public double calculateCost(Vehicle vehicle, Date input, Date output);
+    public double calculateCost(Date input, Date output);
 
 }

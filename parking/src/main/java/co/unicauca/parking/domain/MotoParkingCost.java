@@ -5,7 +5,6 @@
  */
 package co.unicauca.parking.domain;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -16,17 +15,13 @@ import java.util.concurrent.TimeUnit;
 public class MotoParkingCost implements IParkingCost{
     
     @Override
-    public double calculateCost(Vehicle vehicle, Date input, Date output) {
+    public double calculateCost( Date input, Date output) {
        long diferencia = output.getTime()-input.getTime();
        int minutos = (int) TimeUnit.MILLISECONDS.toMinutes(diferencia);
        long horas = TimeUnit.MILLISECONDS.toHours(diferencia);
        minutos = (int) (minutos - TimeUnit.HOURS.toMinutes(horas));
-       int hora;
-       int minutes;
        double cuentaCobro = 0;
        double cuentaCobromin = 0;
-       hora = input.getHours();
-       minutes = input.getMinutes();
        if(horas < 1)
        {
            cuentaCobro = 1000;
@@ -44,3 +39,7 @@ public class MotoParkingCost implements IParkingCost{
        return Math.ceil(cuentatotal)*100;
     }
 }
+
+
+//test
+//terminar clases de vehiculo

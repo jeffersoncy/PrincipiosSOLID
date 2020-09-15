@@ -31,7 +31,6 @@ public class VehicleRepository implements IVehicleRepository {
             if (newVehicle == null || newVehicle.getPlateNumber().isEmpty() || newVehicle.getVehicleBrand().isEmpty() || newVehicle.getCapacityPeople() <0 ){
                 return false;
             }
-            //this.connect();
 
             String sql = "INSERT INTO Vehicle (plateNumber, vehicleBrand, capacityPeople, typeVehicle) "
                     + "VALUES ( ?, ?, ?, ?)";
@@ -41,9 +40,7 @@ public class VehicleRepository implements IVehicleRepository {
             pstmt.setString(2, newVehicle.getVehicleBrand());
             pstmt.setInt(3, newVehicle.getCapacityPeople());
             pstmt.setString(4, newVehicle.getTypeVehicle().toString());
-            //pstmt.setString(5, newVehicle.getVehicleModel());
             pstmt.executeUpdate();
-            //this.disconnect();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +54,6 @@ public class VehicleRepository implements IVehicleRepository {
         try {
 
             String sql = "SELECT plateNumber, vehicleBrand, capacityPeople, typeVehicle FROM Vehicle";
-            //this.connect();
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -68,11 +64,8 @@ public class VehicleRepository implements IVehicleRepository {
                 newVehicle.setCapacityPeople(rs.getInt("capacityPeople"));
                 String type = rs.getString("typeVehicle");
                 newVehicle.setTypeVehicle(VehicleEnum.valueOf(type));
-                //newVehicle.setTypeVehicle(VehicleEnum.valueOf(type));
-                //newVehicle.setVehicleModel(rs.getString("vehicleModel"));
                 vehicles.add(newVehicle);
             }
-            //this.disconnect();
 
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +86,6 @@ public class VehicleRepository implements IVehicleRepository {
             this.connect();
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
-            //this.disconnect();
 
         } catch (SQLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,8 +93,6 @@ public class VehicleRepository implements IVehicleRepository {
     }
 
     public void connect() {
-        // SQLite connection string
-        //String url = "jdbc:sqlite:./mydatabase.db";
         String url = "jdbc:sqlite::memory:";
 
         try {

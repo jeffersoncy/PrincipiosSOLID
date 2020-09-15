@@ -29,12 +29,10 @@ public class Vehicle {
      */
 
     public Vehicle(){}
-            //, String vehicleModel, VehicleEnum typeVehicle , int capacityPeople
     public Vehicle(String plateNumber, String vehicleBrand, int capacityPeople, VehicleEnum typeVehicle) {
         this.plateNumber = plateNumber;
         this.vehicleBrand = vehicleBrand;
         this.capacityPeople = capacityPeople;
-        //this.vehicleModel = vehicleModel;
         this.typeVehicle = typeVehicle;
     }   
     
@@ -53,20 +51,6 @@ public class Vehicle {
     public void setTypeVehicle(VehicleEnum typeVehicle) {
         this.typeVehicle = typeVehicle;
     }
-
-//    /**
-//     * @return the vehicleModel
-//     */
-//    public String getVehicleModel() {
-//        return vehicleModel;
-//    }
-//
-//    /**
-//     * @param vehicleModel the vehicleModel to set
-//     */
-//    public void setVehicleModel(String vehicleModel) {
-//        this.vehicleModel = vehicleModel;
-//    }
 
     /**
      * @return the plateNumber

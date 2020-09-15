@@ -14,7 +14,7 @@ import java.util.Date;
 public class CarParkingCost implements IParkingCost{
 
     @Override
-    public double calculateCost(Vehicle vehicle, Date input, Date output) {
+    public double calculateCost( Date input, Date output) {
         return 0;
     }
 
