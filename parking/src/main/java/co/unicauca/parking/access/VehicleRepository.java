@@ -29,9 +29,9 @@ public class VehicleRepository implements IVehicleRepository {
             if (newVehicle == null || newVehicle.getPlateNumber().isEmpty() || newVehicle.getVehicleBrand().isEmpty() || newVehicle.getCapacityPeople() < 0) {
                 return false;
             }
-            //this.connect();
+            this.connect();
 
-            String sql = "INSERT INTO Product ( plateNumber, vehicleBrand, capacityPeople ) "
+            String sql = "INSERT INTO Vehiculo ( plateNumber, vehicleBrand, capacityPeople ) "
                     + "VALUES ( ?, ?, ? )";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class VehicleRepository implements IVehicleRepository {
             pstmt.setString(2, newVehicle.getVehicleBrand());
             pstmt.setDouble(3, newVehicle.getCapacityPeople());
             pstmt.executeUpdate();
-            //this.disconnect();
+            this.disconnect();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Provider.Service.class.getName()).log(Level.SEVERE, null, ex);
