@@ -27,8 +27,7 @@ public class Client {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service service = new Service(repository);
         SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("11:00");
-        Date output = simple.parse("12:40");
+        Date input = simple.parse("24:00");
         System.out.println(" la hora ingresada es: "+input.getHours()+" y los minutos son: "+input.getMinutes());
         
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
@@ -43,8 +42,8 @@ public class Client {
             System.out.println(p);
         }
         
-        System.out.println("El costo es: "+service.calculateParkingCost(moto1, input, output));
-        System.out.println("El costo es: "+service.calculateParkingCost(carro1, input, output));
-        System.out.println("El costo es: "+service.calculateParkingCost(truck1, input, output));
+        System.out.println("El costo es: "+service.calculateParkingCost(moto1, input));
+        System.out.println("El costo es: "+service.calculateParkingCost(carro1, input));
+        System.out.println("El costo es: "+service.calculateParkingCost(truck1, input));
     }
 }
