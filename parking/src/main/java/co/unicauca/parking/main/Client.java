@@ -33,15 +33,18 @@ public class Client {
         
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
         Vehicle carro1 = new Vehicle("123-CDE", "MAZDA", 15, VehicleEnum.CAR);
+        Vehicle truck1 = new Vehicle("123-EFG", "CAT", 45, VehicleEnum.TRUCK);
         
         service.saveVehicle(moto1);
         service.saveVehicle(carro1);
+        service.saveVehicle(truck1);
         
         for (Vehicle p : service.listVehicles()) {
             System.out.println(p);
         }
         
         System.out.println("El costo es: "+service.calculateParkingCost(moto1, input, output));
+        System.out.println("El costo es: "+service.calculateParkingCost(carro1, input, output));
+        System.out.println("El costo es: "+service.calculateParkingCost(truck1, input, output));
     }
-    
 }

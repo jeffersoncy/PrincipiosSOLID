@@ -38,7 +38,4 @@ public class CarParkingCost implements IParkingCost{
        double cuentatotal = (cuentaCobro+cuentaCobromin)*0.01;
        return Math.ceil(cuentatotal)*100;
     }
-
-
-    
 }
