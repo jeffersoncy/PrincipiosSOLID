@@ -43,18 +43,21 @@ public class ViajeTest {
         assertEquals(15, carro1.getCapacityPeople());
         assertEquals("MAZDA", carro1.getVehicleBrand());
     }
-    
-    public void testMotoParkingcost() throws ParseException {
-        System.out.println("test Moto parking cost");
+    /**
+     * Test de la clase .
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testMotoParkingcostMenorHora() throws ParseException {
+        System.out.println("test Moto parking cost menos de una hora");
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
         SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("11:00");
-        Date output = simple.parse("12:40");
-        Factura.calculateParkingCost(, input, output);
-        
-        
+        Date input = simple.parse("00:40");
+        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        assertEquals(1000,costo);
     }
 //    /**
 //     * Test de la clase ViajeIncentivo.

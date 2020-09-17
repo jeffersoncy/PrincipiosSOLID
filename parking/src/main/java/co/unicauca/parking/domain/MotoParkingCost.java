@@ -6,7 +6,6 @@
 package co.unicauca.parking.domain;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -16,9 +15,8 @@ public class MotoParkingCost implements IParkingCost{
     
     @Override
     public double calculateCost( Date time) {
-       int minutos = (int) TimeUnit.MILLISECONDS.toMinutes(time.getTime());
-       long horas = TimeUnit.MILLISECONDS.toHours(time.getTime());
-       minutos = (int) (minutos - TimeUnit.HOURS.toMinutes(horas));
+       int horas = time.getHours();
+       int minutos = time.getMinutes();
        double cuentaCobro = 0;
        double cuentaCobromin = 0;
        if(horas < 1)
