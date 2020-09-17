@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Personal
  */
-public class TruckPartingCost implements IParkingCost {
+public class TruckParkingCost implements IParkingCost {
 
     @Override
     public double calculateCost(Date input, Date output) {

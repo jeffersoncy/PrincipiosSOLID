@@ -24,7 +24,7 @@ public class VehicleFactory {
         dictionary = new EnumMap<>(VehicleEnum.class);
         dictionary.put(VehicleEnum.MOTO, new MotoParkingCost());
         dictionary.put(VehicleEnum.CAR, new CarParkingCost());
-        dictionary.put(VehicleEnum.TRUCK, new CarParkingCost());
+        dictionary.put(VehicleEnum.TRUCK, new TruckParkingCost());
     }
     
     /**
