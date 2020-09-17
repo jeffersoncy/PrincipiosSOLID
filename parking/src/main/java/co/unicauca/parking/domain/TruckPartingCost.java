@@ -22,21 +22,35 @@ public class TruckPartingCost implements IParkingCost {
        minutos = (int) (minutos - TimeUnit.HOURS.toMinutes(horas));
        double cuentaCobro = 0;
        double cuentaCobromin = 0;
-       if(horas < 12)
+       double sorteo = Math.random()*1000;
+       
+       if(sorteo == 700)
        {
-           cuentaCobro = 10000;
+           return 0;
        }
-       else
+       
+       if(horas == 24)
        {
-           cuentaCobro = 2000;
-           cuentaCobromin = ((1000 * (minutos * 100 / 60))/100);
-           for (int i = 0; i < horas-1; i++)
+           return 15000;
+       }
+       
+       if(horas <= 12)
+       {
+           return 10000;
+       }
+       
+       if(horas > 24)
+       {
+           cuentaCobro = 15000;
+           cuentaCobromin = (7500 *(minutos * 100/60)/100);
+           
+           for(int i = 0; i < horas - 1; i ++)
            {
-               cuentaCobro = cuentaCobro + 1000;
+               cuentaCobro = cuentaCobro + 7500;
            }
-       }
-       double cuentatotal = (cuentaCobro+cuentaCobromin)*0.01;
-       return Math.ceil(cuentatotal)*100;
+       }    
+       
+       double cuentatotal = (cuentaCobro + cuentaCobromin) * 0.01; 
+       return Math.ceil(cuentatotal) * 100;
     }
-    
 }
