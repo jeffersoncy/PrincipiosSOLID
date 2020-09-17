@@ -23,9 +23,9 @@ public class TruckParkingCost implements IParkingCost {
        double sorteo;
        double cuentaTotal;
        
-       cuentaCobro = 15000;
+       cuentaCobro = 0;
        cuentaCobromin = 0;
-       cuentaTotal = 0;
+       cuentaTotal = 15000 * 0.01;
        sorteo = Math.random()*1000;
        
        if(sorteo == 100)
@@ -33,32 +33,18 @@ public class TruckParkingCost implements IParkingCost {
            cuentaTotal = 0;
        }
        
-       if(horas == 24)
-       {
-           cuentaTotal = 15000 * 0.01;
-       }
-       else if(horas <= 12)
+       if(horas <= 12)
        {
            cuentaTotal = 10000 * 0.01;
        }
-       else if(horas > 12 && horas < 24)
-       {
-           cuentaCobromin = (5000 * (minutos * 100/60)/100);
-           
-           for(int i = horas; i > 12; i --)
-           {
-               cuentaCobro += 5000;
-           }
-           
-           cuentaTotal = (cuentaCobro + cuentaCobromin) * 0.01;
-       }
        else if(horas > 24)
        {
-           cuentaCobromin = (5000 * (minutos * 100/60)/100);
+           cuentaCobro = 15000;
+           cuentaCobromin = (7500 * (minutos * 100/60)/100);
            
            for(int i = horas; i > 24; i --)
            {
-               cuentaCobro += 5000;
+               cuentaCobro += 7500;
            }
            
            cuentaTotal = (cuentaCobro + cuentaCobromin) * 0.01;
