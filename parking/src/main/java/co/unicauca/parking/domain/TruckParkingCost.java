@@ -15,10 +15,9 @@ import java.util.concurrent.TimeUnit;
 public class TruckParkingCost implements IParkingCost {
 
     @Override
-    public double calculateCost(Date input, Date output) {
-       long diferencia = output.getTime()-input.getTime();
-       int minutos = (int) TimeUnit.MILLISECONDS.toMinutes(diferencia);
-       long horas = TimeUnit.MILLISECONDS.toHours(diferencia);
+    public double calculateCost(Date time) {
+       int minutos = (int) TimeUnit.MILLISECONDS.toMinutes(time.getTime());
+       long horas = TimeUnit.MILLISECONDS.toHours(time.getTime());
        minutos = (int) (minutos - TimeUnit.HOURS.toMinutes(horas));
        double cuentaCobro = 0;
        double cuentaCobromin = 0;
