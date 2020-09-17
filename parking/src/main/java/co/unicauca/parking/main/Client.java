@@ -27,12 +27,8 @@ public class Client {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service service = new Service(repository);
         SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = null;
-        Date output = null;
-        
-        input = simple.parse("11:00");
-        output = simple.parse("12:40");
-        
+        Date input = simple.parse("11:00");
+        Date output = simple.parse("12:40");
         System.out.println(" la hora ingresada es: "+input.getHours()+" y los minutos son: "+input.getMinutes());
         
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);

@@ -39,7 +39,3 @@ public class MotoParkingCost implements IParkingCost{
        return Math.ceil(cuentatotal)*100;
     }
 }
-
-
-//test
-//terminar clases de vehiculo
