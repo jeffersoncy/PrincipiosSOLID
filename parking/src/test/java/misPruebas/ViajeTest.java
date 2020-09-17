@@ -25,7 +25,7 @@ public class ViajeTest {
     }
     
     /**
-     * Test de la clase ViajeFamiliar.
+     * Test de la clase Vehicle.
      *
      * @throws java.text.ParseException
      */
@@ -44,7 +44,7 @@ public class ViajeTest {
         assertEquals("MAZDA", carro1.getVehicleBrand());
     }
     /**
-     * Test de la clase .
+     * Test de la clase MotoParkingCost.
      *
      * @throws java.text.ParseException
      */
@@ -59,63 +59,94 @@ public class ViajeTest {
         int costo = (int) Factura.calculateParkingCost(moto1,input);
         assertEquals(1000,costo);
     }
-//    /**
-//     * Test de la clase ViajeIncentivo.
-//     *
-//     * @throws java.text.ParseException
-//     */
-//    @Test
-//    public void testViajeIncentivo() throws ParseException {
-//        System.out.println("Viaje incentivo");
-//        ViajeIncentivo viaje = new ViajeIncentivo("Popayán", "Medellin", 2100000, new SimpleDateFormat("dd/MM/yyyy").parse("03/06/2019"), new SimpleDateFormat("dd/MM/yyyy").parse("09/06/2019"), "Emtel");
-//        assertEquals("Popayán", viaje.getOrigen());
-//        assertEquals("Medellin", viaje.getDestino());
-//        assertEquals(2100000, viaje.getCosto());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("03/06/2019"), viaje.getFechaSalida());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("09/06/2019"), viaje.getFechaLlegada());
-//        assertEquals("Emtel", viaje.getEmpresa());
-//        assertEquals("Viaje incentivo que te envia la empresa Emtel", viaje.descripcion());
-//        assertEquals("Cualquier método implementado en la clase base", viaje.cualquierMetodo());
-//        assertEquals("Método implementado en la clase hija viaje de incentivo", viaje.cualquierMetodo2());
-//    }
-//
-//    /**
-//     * Test de la clase ViajeIndividual.
-//     *
-//     * @throws java.text.ParseException
-//     */
-//    @Test
-//    public void testViajeIndividual() throws ParseException {
-//        System.out.println("Viaje individual");
-//        Viaje viaje = new ViajeIndividual("Popayán", "San Andres", 4250000, new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2019"), new SimpleDateFormat("dd/MM/yyyy").parse("12/07/2019"));
-//        assertEquals("Popayán", viaje.getOrigen());
-//        assertEquals("San Andres", viaje.getDestino());
-//        assertEquals(4250000, viaje.getCosto());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2019"), viaje.getFechaSalida());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("12/07/2019"), viaje.getFechaLlegada());
-//        assertEquals("Disfruta tu viaje individual", viaje.descripcion());
-//        assertEquals("Cualquier método implementado en la clase base", viaje.cualquierMetodo());
-//        assertEquals("Cualquier método2 implementado en la clase base", viaje.cualquierMetodo2());
-//
-//    }
-//
-//    /**
-//     * Test de la clase ViajeTodoIncluido.
-//     *
-//     * @throws java.text.ParseException
-//     */
-//    @Test
-//    public void testViajeTodoIncluido() throws ParseException {
-//        System.out.println("Viaje todo incluido");
-//        Viaje viaje = new ViajeTodoIncluido("Popayán", "Cartagena", 7350000, new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2019"), new SimpleDateFormat("dd/MM/yyyy").parse("12/07/2019"));
-//        assertEquals("Popayán", viaje.getOrigen());
-//        assertEquals("Cartagena", viaje.getDestino());
-//        assertEquals(7350000, viaje.getCosto());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("01/07/2019"), viaje.getFechaSalida());
-//        assertEquals(new SimpleDateFormat("dd/MM/yyyy").parse("12/07/2019"), viaje.getFechaLlegada());
-//        assertEquals("Disfruta tu viaje todo incluido", viaje.descripcion());
-//        assertEquals("Cualquier método implementado en la clase base", viaje.cualquierMetodo());
-//        assertEquals("Cualquier método2 implementado en la clase base", viaje.cualquierMetodo2());
-//    }
-
+    /**
+     * Test de la clase MotoParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testMotoParkingcostMayorHora() throws ParseException {
+        System.out.println("test Moto parking cost mayor a una hora");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
+        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
+        Date input = simple.parse("01:30");
+        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        assertEquals(1300,costo);
+    }
+    /**
+     * Test de la clase MotoParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testMotoParkingcostRedondeo() throws ParseException {
+        System.out.println("test Moto parking cost redondeo");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
+        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
+        //obtenemos en este caso 1275 en el cual se redondearía a 1300
+        Date input = simple.parse("01:33");
+        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        assertEquals(1300,costo);
+        // y en este caso 1240 en el cual se redondearía a 1300
+        input = simple.parse("01:29");
+        costo = (int) Factura.calculateParkingCost(moto1,input);
+        assertEquals(1300,costo);
+    }
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testCarParkingcostMenorHora() throws ParseException {
+        System.out.println("test Car parking cost menos de una hora");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
+        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
+        Date input = simple.parse("00:40");
+        int costo = (int) Factura.calculateParkingCost(car1,input);
+        assertEquals(2000,costo);
+    }
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testCarParkingcostMayorHora() throws ParseException {
+        System.out.println("test Car parking cost mayor a una hora");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
+        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
+        Date input = simple.parse("01:30");
+        int costo = (int) Factura.calculateParkingCost(car1,input);
+        assertEquals(2500,costo);
+    }
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testCarParkingcostRedondeo() throws ParseException {
+        System.out.println("test Car parking cost redondeo");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
+        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
+        //obtenemos en este caso 2560 en el cual se redondearía a 2600
+        Date input = simple.parse("01:34");
+        int costo = (int) Factura.calculateParkingCost(car1,input);
+        assertEquals(2600,costo);
+        // y en este caso 2530 en el cual se redondearía a 2600
+        input = simple.parse("01:32");
+        costo = (int) Factura.calculateParkingCost(car1,input);
+        assertEquals(2600,costo);
+    }
 }
