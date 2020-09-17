@@ -14,9 +14,7 @@ import java.util.Date;
 public class MotoParkingCost implements IParkingCost{
     
     @Override
-    public double calculateCost( Date time) {
-       int horas = time.getHours();
-       int minutos = time.getMinutes();
+    public double calculateCost(int horas, int minutos) {
        double cuentaCobro = 0;
        double cuentaCobromin = 0;
        if(horas < 1)

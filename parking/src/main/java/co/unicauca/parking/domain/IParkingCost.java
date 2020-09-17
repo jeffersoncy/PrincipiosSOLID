@@ -13,6 +13,6 @@ import java.util.Date;
  */
 public interface IParkingCost {
 
-    public double calculateCost(Date time);
+    public double calculateCost(int horas, int minutos);
 
 }

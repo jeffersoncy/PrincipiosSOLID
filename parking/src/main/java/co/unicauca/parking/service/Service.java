@@ -32,7 +32,7 @@ public class Service {
         this.repository = repository;
     }
 
-    public double calculateParkingCost(Vehicle vehicle, Date time) {
+    public double calculateParkingCost(Vehicle vehicle, int horas, int minutos) {
 
         //Validate product.
         if (vehicle == null) {
@@ -40,7 +40,7 @@ public class Service {
         }
         //falta implementar la interface
         IParkingCost delivery = VehicleFactory.getInstance().getDelivery(vehicle.getTypeVehicle());
-        double result = delivery.calculateCost(time);
+        double result = delivery.calculateCost(horas,minutos);
         
         return result;
     }
