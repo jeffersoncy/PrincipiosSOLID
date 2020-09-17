@@ -7,7 +7,7 @@ package co.unicauca.parking.domain;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public enum VehicleEnum {
     CAR,MOTO,TRUCK

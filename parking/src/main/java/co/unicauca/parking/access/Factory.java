@@ -7,7 +7,7 @@ package co.unicauca.parking.access;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public class Factory {
     private static Factory instance;

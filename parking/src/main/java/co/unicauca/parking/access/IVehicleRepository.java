@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public interface IVehicleRepository {
        boolean save(Vehicle newVehicle);

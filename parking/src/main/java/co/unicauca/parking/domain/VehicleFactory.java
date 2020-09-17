@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public class VehicleFactory {
 

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public class TruckParkingCost implements IParkingCost {
 

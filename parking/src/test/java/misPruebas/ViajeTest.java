@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Libardo Pantoja, Ricardo Zambrano
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public class ViajeTest {
 
@@ -127,12 +127,73 @@ public class ViajeTest {
         Service Factura = new Service(repository);
         Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
         //obtenemos en este caso 2560 en el cual se redondearía a 2600
-        int costo = (int) Factura.calculateParkingCost(car1,01,34);
+        int costo = (int)Factura.calculateParkingCost(car1,01,34);
         assertEquals(2600,costo);
         // y en este caso 2530 en el cual se redondearía a 2600
         costo = (int) Factura.calculateParkingCost(car1,01,32);
         assertEquals(2600,costo);
     }
     
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testTruckParkingcostMedioDia() throws ParseException {
+        System.out.println("test Truck parking cost medio dia");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle truck1 = new Vehicle("123-EFG", "Cat", 10, VehicleEnum.TRUCK);
+        int costo = (int) Factura.calculateParkingCost(truck1,05,40);
+        assertEquals(10000,costo);
+    }
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testTruckParkingcostDiaCompleto() throws ParseException {
+        System.out.println("test Truck parking cost Dia Completo");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle truck1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.TRUCK);
+        int costo = (int) Factura.calculateParkingCost(truck1,24,00);
+        assertEquals(15000,costo);
+    }
+    /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testTruckParkingcostRedondeo() throws ParseException {
+        System.out.println("test Truck parking cost redondeo");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle truck1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.TRUCK);
+        //obtenemos en este caso 26325 en el cual se redondearía a 26400
+        int costo = (int)Factura.calculateParkingCost(truck1,25,31);
+        assertEquals(26400,costo);
+        // y en este caso 26475 en el cual se redondearía a 26500
+        costo = (int) Factura.calculateParkingCost(truck1,25,32);
+        assertEquals(26500,costo);
+    }
+    
+        /**
+     * Test de la clase CarParkingCost.
+     *
+     * @throws java.text.ParseException
+     */
+    @Test
+    public void testTruckParkingcostExtraDias() throws ParseException {
+        System.out.println("test Truck parking cost mayor a un dia");
+        IVehicleRepository repository = Factory.getInstance().getRepository("default");
+        Service Factura = new Service(repository);
+        Vehicle truck1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.TRUCK);
+        int costo = (int) Factura.calculateParkingCost(truck1,25,00);
+        assertEquals(22500,costo);
+    }
     
 }

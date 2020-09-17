@@ -10,16 +10,14 @@ import co.unicauca.parking.domain.IParkingCost;
 import co.unicauca.parking.domain.Vehicle;
 import co.unicauca.parking.domain.VehicleFactory;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin 
  */
 public class Service {
     // Ahora hay una dependencia de una abstracción, no es algo concreto,
-    // no sabe cómo está implementado.
     private IVehicleRepository repository;
 
     /**

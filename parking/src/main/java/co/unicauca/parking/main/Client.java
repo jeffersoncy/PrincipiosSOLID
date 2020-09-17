@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public class Client {
 
@@ -44,6 +44,6 @@ public class Client {
         
         System.out.println("El costo es: "+service.calculateParkingCost(moto1,0,36));
         System.out.println("El costo es: "+service.calculateParkingCost(carro1,0,0));
-        System.out.println("El costo es: "+service.calculateParkingCost(truck1,26,30));
+        System.out.println("El costo es: "+service.calculateParkingCost(truck1,25,32));
     }
 }

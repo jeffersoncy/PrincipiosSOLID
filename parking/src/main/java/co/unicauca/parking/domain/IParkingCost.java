@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Personal
+ * @author Jefferson Eduardo Campo y Fabian David Marin
  */
 public interface IParkingCost {
 
