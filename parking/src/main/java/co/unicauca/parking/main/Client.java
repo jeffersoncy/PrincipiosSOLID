@@ -42,8 +42,8 @@ public class Client {
             System.out.println(p);
         }
         
-        System.out.println("El costo es: "+service.calculateParkingCost(moto1, input));
-        System.out.println("El costo es: "+service.calculateParkingCost(carro1, input));
-        System.out.println("El costo es: "+service.calculateParkingCost(truck1, input));
+        System.out.println("El costo es: "+service.calculateParkingCost(moto1,0,36));
+        System.out.println("El costo es: "+service.calculateParkingCost(carro1,0,0));
+        System.out.println("El costo es: "+service.calculateParkingCost(truck1,26,30));
     }
 }

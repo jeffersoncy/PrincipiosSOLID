@@ -10,8 +10,6 @@ import co.unicauca.parking.access.IVehicleRepository;
 import co.unicauca.parking.domain.*;
 import co.unicauca.parking.service.Service;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -54,9 +52,7 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("00:40");
-        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        int costo = (int) Factura.calculateParkingCost(moto1,0,36);
         assertEquals(1000,costo);
     }
     /**
@@ -70,9 +66,7 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("01:30");
-        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        int costo = (int) Factura.calculateParkingCost(moto1,01,30);
         assertEquals(1300,costo);
     }
     /**
@@ -86,14 +80,11 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle moto1 = new Vehicle("123-ABC", "SUZUKI", 10, VehicleEnum.MOTO);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
         //obtenemos en este caso 1275 en el cual se redondearía a 1300
-        Date input = simple.parse("01:33");
-        int costo = (int) Factura.calculateParkingCost(moto1,input);
+        int costo = (int) Factura.calculateParkingCost(moto1,01,33);
         assertEquals(1300,costo);
         // y en este caso 1240 en el cual se redondearía a 1300
-        input = simple.parse("01:29");
-        costo = (int) Factura.calculateParkingCost(moto1,input);
+        costo = (int) Factura.calculateParkingCost(moto1,01,29);
         assertEquals(1300,costo);
     }
     /**
@@ -107,9 +98,7 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("00:40");
-        int costo = (int) Factura.calculateParkingCost(car1,input);
+        int costo = (int) Factura.calculateParkingCost(car1,00,40);
         assertEquals(2000,costo);
     }
     /**
@@ -123,9 +112,7 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-        Date input = simple.parse("01:30");
-        int costo = (int) Factura.calculateParkingCost(car1,input);
+        int costo = (int) Factura.calculateParkingCost(car1,01,30);
         assertEquals(2500,costo);
     }
     /**
@@ -139,14 +126,13 @@ public class ViajeTest {
         IVehicleRepository repository = Factory.getInstance().getRepository("default");
         Service Factura = new Service(repository);
         Vehicle car1 = new Vehicle("123-CDE", "Mazda", 10, VehicleEnum.CAR);
-        SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
         //obtenemos en este caso 2560 en el cual se redondearía a 2600
-        Date input = simple.parse("01:34");
-        int costo = (int) Factura.calculateParkingCost(car1,input);
+        int costo = (int) Factura.calculateParkingCost(car1,01,34);
         assertEquals(2600,costo);
         // y en este caso 2530 en el cual se redondearía a 2600
-        input = simple.parse("01:32");
-        costo = (int) Factura.calculateParkingCost(car1,input);
+        costo = (int) Factura.calculateParkingCost(car1,01,32);
         assertEquals(2600,costo);
     }
+    
+    
 }
